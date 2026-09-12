@@ -1,25 +1,33 @@
+import Modal from './modal.js';
+import Form from './form.js';
+
+const registrationModal = new Modal('myModal');
+
+const footerFormController = new Form('footer-subscribe-form'); 
+const registrationFormController = new Form('registrationForm');
+
 const emailForm = document.querySelector(".secondblock");
 
 emailForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  const form = event.target;
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData.entries());
-  console.log(data);
-});
+
+  if (footerFormController.isValid()) {
+    const data = footerFormController.getValues();
+    console.log("Данные подписки из футера:", data);
+
+    footerFormController.reset();
+  }
+
+})
 
 const openBtn = document.getElementById('openModalBtn');
-const closeBtn = document.getElementById('closeModalBtn');
-const modal = document.getElementById('myModal');
 const registrationForm = document.getElementById("registrationForm");
 
-openBtn.addEventListener('click', function() {
-  modal.classList.add('active');
-});
-
-closeBtn.addEventListener('click', () => {
-  modal.classList.remove('active');
-});
+if (openBtn) {
+  openBtn.addEventListener('click', function() {
+    registrationModal.open();
+  })
+}
 
 
 registrationForm.addEventListener("submit", function (event) {
@@ -56,13 +64,11 @@ if (birthDate) {
   }
 }
 
-
-const modalformData = new FormData(currentForm);
-const user = Object.fromEntries(modalformData.entries());
-delete modaldata.userPasswordConfirm;
+const user = registrationFormController.getValues();
+delete user.userPasswordConfirm;
 user.createdOn = new Date();
-console.log("Зарегестрирован пользователь:", user);
-modal.classList.remove("active");
-alert("Вы успешно зарегистрированы!");
-
+console.log("Зарегистрирован пользователь:", user)
+registrationModal.close();
+registrationFormController.reset();
+alert("Вы успешно зарегестрированы!")
 });
