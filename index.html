@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,6 +41,7 @@
         <span class="product-card__cost"></span>
       </li>
     </template>
+
     <footer class="content">
   <div class="blocks">
     
@@ -49,13 +50,14 @@
       <p class="firstblock__description">У нас самые лучшие продукты для кожи!</p>
     </article>
 
-    <form class="secondblock">
+
+    <form class="secondblock" id="footer-subscribe-form">
       <p class="secondblock__clue">Подпишись на наши акции:</p>
         <label>
-          <input id="post-name" type="email" name="email" class = "secondblock__text" placeholder="Введи Email...">
+          <input id="post-name" type="email" name="email" class="secondblock__text" placeholder="Введи Email..." required>
           <button type="submit">Подписаться</button>
         </label>
-      </form>
+    </form>
 
     <nav class="thirdblock">
       <p class="thirdblock__title">Быстрые ссылки</p>
@@ -96,14 +98,6 @@
       </form>
     </div>
   </div>
-
-    <script src="main.js"></script>
-    <script src="homework-7.js"></script>
-    <script src="homework-8.js"></script>
-    <script src="homework-9.js" defer type="module"></script>
-    <script src="comments.js" defer type="module"></script>
-    <script src="homework-10.js" defer type="module"></script>
-    <script src="product-cards.js" defer type="module"></script>
-    <script src="homework-11.js"></script>
+    <script src="main.js" defer type="module"></script>
   </body>
 </html>
