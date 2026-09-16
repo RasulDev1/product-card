@@ -8,17 +8,6 @@ const registrationFormController = new Form('registrationForm');
 
 const emailForm = document.querySelector(".secondblock");
 
-emailForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  if (footerFormController.isValid()) {
-    const data = footerFormController.getValues();
-    console.log("Данные подписки из футера:", data);
-    footerFormController.reset();
-  }
-
-})
-
 const openBtn = document.getElementById('openModalBtn');
 const registrationForm = document.getElementById("registrationForm");
 

@@ -1,6 +1,6 @@
 class Modal {
-    constructor(ID) {
-        this.modal = document.getElementById(ID);
+    constructor(modalId) {
+        this.modal = document.getElementById(modalId);
         this.Initlisten();
     }
     open() {
@@ -16,9 +16,9 @@ class Modal {
             }
             return false;
     }
-
     isValid() {
         return this.modal.classList.contains('active');
+
     }
 
     Initlisten() {
