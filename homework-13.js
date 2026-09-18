@@ -13,14 +13,17 @@ class Drink {
     getTemperature() {
         return `${this.temperature}°C`
     }
-    setTemperature(newTemperature) {
+    #setTemperature(newTemperature) {
         if(typeof newTemperature === 'number') {
             this.temperature = newTemperature;
         } else {
             console.error("Ошибка: Температура должна быть числом!");
         }
     }
-    prepare() {
+    prepare(targetTemperature) {
+        if (targetTemperature !== undefined) {
+            this.#setTemperature(targetTemperature);
+        }
         return `Напиток ${this.name} успешно приготовлен при температуре ${this.temperature}°C.`;
     }
 
@@ -30,13 +33,13 @@ class Drink {
     }
 
 }
-const Water = new Drink("Вода", "500 мл", 1.5, 10);
-console.log(Water.getInfo());
-console.log(Water.getTemperature());
-Water.setTemperature(5);
-console.log(Water.getTemperature());
-console.log(Water.prepare());
-console.log(Water.serve());
+const water = new Drink("Вода", "500 мл", 1.5, 10);
+console.log(water.getInfo());
+console.log(water.getTemperature());
+water.prepare(5);
+console.log(water.getTemperature());
+console.log(water.prepare());
+console.log(water.serve());
 
 
 class Limonade extends Drink {
@@ -46,46 +49,41 @@ class Limonade extends Drink {
     }
 }
 
-const Lemonade = new Limonade("Лимонад", "330 мл", 2.5, 5, "Лимон");
-console.log(Lemonade.getInfo());
-console.log(`Вкус: ${Lemonade.flavor}`);
+const Limon = new Limonade("Лимонад", "330 мл", 2.5, 5, "Лимон");
+console.log(Limon.getInfo());
+console.log(`Вкус: ${Limon.flavor}`);
 
-class cola extends Drink {
+class Cola extends Drink {
     constructor(name, size, price, temperature, sugarContent) {
         super(name, size, price, temperature);
         this.sugarContent = sugarContent;
     }
 }
 
-class pepsi extends cola {
-    constructor(name, size, price, temperature, sugarContent, isDiet) {
-        super(name, size, price, temperature, sugarContent);
-        this.isDiet = isDiet;
-    }
-}
 
-class tea extends Drink {
+class Tea extends Drink {
     constructor(name, size, price, temperature, type) {
         super(name, size, price, temperature);
         this.type = type;
     }
 }
 
-class coffee extends Drink {
-    constructor(name, size, price, temperature, location) {
-        super(name, size, price, temperature);
-        this.location = location    ;
+class Cafe {
+    constructor(cafename, cafelocation) {
+        this.cafename = cafename;
+        this.cafelocation = cafelocation;
     }
 
     getInfo() {
-        return `Название: ${this.name}, Размер: ${this.size}, Цена: ${this.price}, Температура: ${this.temperature}, Место приготовления: ${this.location}`;
+        return `Название: ${this.cafename}, Место: ${this.cafelocation}`;
     }
 
-    order() {
-        return `Заказ принят: Кофе ${this.name} готовится. Пожалуйста, подождите.`;
+    drinkOrder(drink) {
+        return `Заказ принят: ${drink.name} готовится. Пожалуйста, подождите.`;
     }
 }
 
-const Espresso = new coffee("Эспрессо", "30 мл", 3.0, 90, "Италия");
-console.log(Espresso.getInfo());
-console.log(Espresso.order());
+const newCafe = new Cafe("Cafeyurt", "ул. Мужчинская 51");
+console.log(newCafe.getInfo());
+const order = newCafe.drinkOrder(water);
+console.log(order);
