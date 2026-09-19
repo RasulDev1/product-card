@@ -17,9 +17,7 @@ class Form {
             return false;
         }
 
-        // 1. Убрали сбоящий checkValidity(). Теперь полностью доверяем своим JS-методам!
-        // 2. Поочередно запускаем наши валидаторы:
-        if (this.login() === false) return false;    // Железная проверка логина
+        if (this.login() === false) return false;
         if (this.password() === false) return false;
         if (this.names() === false) return false;
         if (this.data() === false) return false;
@@ -33,15 +31,13 @@ class Form {
         this.formElement.reset();
     }
 
-    // Тот самый надежный валидатор для логина (как для даты)
+
     login() {
         if (!this.formElement) return false;
         const elements = this.formElement.elements;
         
-        // Получаем значение. Убедитесь, что в HTML у инпута логина стоит name="userLogin"
         const loginValue = elements["userLogin"]?.value || '';
 
-        // Проверяем на пустоту
         if (!loginValue.trim()) {
             alert("Логин не может быть пустым!");
             return false;
