@@ -13,22 +13,22 @@ class Drink {
     getTemperature() {
         return `${this.temperature}°C`
     }
-    #setTemperature(newTemperature) {
+    setTemperature(newTemperature) {
         if(typeof newTemperature === 'number') {
             this.temperature = newTemperature;
         } else {
             console.error("Ошибка: Температура должна быть числом!");
         }
     }
-    prepare(targetTemperature) {
+    #prepare(targetTemperature) {
         if (targetTemperature !== undefined) {
-            this.#setTemperature(targetTemperature);
+            this.setTemperature(targetTemperature);
         }
         return `Напиток ${this.name} успешно приготовлен при температуре ${this.temperature}°C.`;
     }
 
     serve() {
-        const prepareSteps = this.prepare();
+        const prepareSteps = this.#prepare();
         return `Напиток ${this.name} подан. Приятного аппетита!`;
     }
 
@@ -36,9 +36,8 @@ class Drink {
 const water = new Drink("Вода", "500 мл", 1.5, 10);
 console.log(water.getInfo());
 console.log(water.getTemperature());
-water.prepare(5);
+console.log(water.setTemperature(8));
 console.log(water.getTemperature());
-console.log(water.prepare());
 console.log(water.serve());
 
 
