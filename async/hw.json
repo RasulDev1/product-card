@@ -1,0 +1,23 @@
+{ "users": [
+   { "id": 1,
+    "name": "Слон",
+    "surname": "Слонов",
+    "email": "slon.slonov@example.com",
+    "age": 28,
+    "city": "Слоновск" },
+
+    { "id": 2,
+    "name": "Леонардо",
+    "surname": "Дикаприо",
+    "email": "leonardo.dicaprio@example.com",
+    "age": 32, 
+    "city": "Титаник" },
+
+    { "id": 3,
+    "name": "Jason",
+    "surname": "Statham",
+    "email": "jason.statham@example.com",
+    "age": 24,
+    "city": "Лондон" }
+    ]
+   }
